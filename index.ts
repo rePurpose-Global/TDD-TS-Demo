@@ -12,9 +12,17 @@ do {
       continue;
   }
   const answer = Math.floor(Math.random() * 10 + 1);
-  shouldContinue = guess !== answer ;
-  console.log(`The correct answer was ${answer}\n`);
-  
+  if(guess !== answer){
+    console.log(`The correct answer was ${answer}\n`);
+    const userWill = question("Do you want to try again? (y/n)\n");
+    if(userWill === 'n')
+    {
+        shouldContinue = false;
+        console.log(`Better luck next time coward`);
+    }
+  } else {
+    shouldContinue = false;   
+    console.log(`Congratulations ${name}, you won\n`);
+  }
 } while (shouldContinue);
 
-console.log(`Congratulations ${name}, you won\n`)
